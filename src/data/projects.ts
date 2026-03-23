@@ -1,0 +1,51 @@
+import { Project } from '@/components/ProjectCard';
+
+export const projects: Project[] = [
+    {
+        id: 'spacewall',
+        title: 'SpaceWall',
+        description: 'A free website maker to launch personal pages in minutes without coding.',
+        techStack: ['Next.js', 'TypeScript', 'Tailwind'],
+        status: 'Live',
+        liveUrl: 'https://spacewall.me',
+        image: '/spacewall.me.png',
+    },
+    {
+        id: 'rdtli',
+        title: 'rdt.li',
+        description: 'A self-hostable, feature-rich and minimal URL shortener. Built as an open source alternative to bit.ly.',
+        techStack: ['Next.js', 'TypeScript', 'Drizzle', 'PostgreSQL', 'NextAuth'],
+        status: 'Open Source',
+        githubUrl: 'https://github.com/nrjdalal/rdt.li',
+        liveUrl: 'https://rdt.li',
+        image: '/rdt.li.png',
+    },
+    {
+        id: 'serpwe',
+        title: 'Serpwe',
+        description: 'Keyword research platform to generate ideas and organize them into topical clusters for SEO workflows.',
+        techStack: ['Next.js', 'TypeScript', 'Tailwind', 'AWS Lambda'],
+        status: 'Live',
+        liveUrl: 'https://serpwe.com',
+        image: '/serpwe.com.png',
+    },
+    {
+        id: 'hetrolinks',
+        title: 'Hetrolinks',
+        description: 'SaaS product to detect and repair broken Amazon affiliate links across websites at scale.',
+        techStack: ['Node.js', 'AWS Lambda', 'Web Scraping', 'Queue System'],
+        status: 'Live',
+        liveUrl: 'https://hetrolinks.com',
+        image: '/hetrolinks.com.png',
+    },
+    {
+        id: 'shadcn-ui-snippets',
+        title: 'shadcn/ui snippets',
+        description: 'VS Code extension that speeds up shadcn/ui component usage with productive snippets.',
+        techStack: ['TypeScript', 'VS Code Extension', 'Open Source'],
+        status: 'Open Source',
+        githubUrl: 'https://github.com/nrjdalal/shadcn-ui-snippets',
+        liveUrl: 'https://marketplace.visualstudio.com/items?itemName=VeroXyle.shadcn-ui-snippets',
+        image: '/serpwe.old.png',
+    },
+];

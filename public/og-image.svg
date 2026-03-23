@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Neeraj Dalal</title>
+  <desc id="desc">Neeraj Dalal personal website and portfolio.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e0e0e"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="145" r="180" fill="#f4d03f" fill-opacity="0.08"/>
+  <circle cx="220" cy="520" r="210" fill="#f4d03f" fill-opacity="0.06"/>
+  <text x="110" y="280" fill="#f4d03f" font-family="'Geist Mono', ui-monospace, Menlo, monospace" font-size="82" font-weight="700">Neeraj Dalal</text>
+  <text x="110" y="350" fill="#d4d4d4" font-family="'Geist Mono', ui-monospace, Menlo, monospace" font-size="36">Full-Stack Developer</text>
+  <text x="110" y="402" fill="#a9a9a9" font-family="'Geist Mono', ui-monospace, Menlo, monospace" font-size="30">Open Source | SaaS | Automation</text>
+  <rect x="110" y="438" width="312" height="2" fill="#f4d03f" fill-opacity="0.5"/>
+  <text x="110" y="488" fill="#bdbdbd" font-family="'Geist Mono', ui-monospace, Menlo, monospace" font-size="24">nrjdalal.com</text>
+</svg>
