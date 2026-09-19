@@ -279,41 +279,6 @@ const Page = async () => {
             ))}
         </div>
       </div>
-
-      {
-        // ~ Contact
-      }
-      <div className="mx-5 border-t border-foreground/25 py-20  lg:py-28">
-        <h2 className="mb-10 text-2xl font-medium text-amber-600 md:text-3xl dark:text-amber-500">
-          Contact
-        </h2>
-
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          <ContactLinks
-            href="mailto:nd941z@gmail.com"
-            title="Let's chat ..."
-            type="Email"
-          >
-            nd941z@gmail.com
-          </ContactLinks>
-
-          <ContactLinks
-            href="tel:+9199999373188"
-            title="Ping me at ..."
-            type="Mobile"
-          >
-            +91 9999 373 1 88
-          </ContactLinks>
-
-          <ContactLinks
-            href="/nrjdalal.pdf"
-            title="About me in doc ..."
-            type="Resume"
-          >
-            Download resume
-          </ContactLinks>
-        </div>
-      </div>
     </main>
   )
 }
