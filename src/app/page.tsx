@@ -57,33 +57,69 @@ const getBlogs = async () => {
   const blogsMeta = await pMap(blogsSlugs, async (slug: string) => {
     const res = await fetch(rawText({ ...githubBlogs, slug }))
 
-    const text = (await res.text())
-      ?.replaceAll('\n', ' ')
-      .split(', }  #')[0]
-      .split('metadata = {   ')[1]
-      ?.replaceAll('     ', ' ')
-      .split(',   ')
+    if (!res.ok) {
+      return {
+        slug,
+        title: slug,
+        description: '',
+        tags: '',
+        publish: false,
+        blog: false,
+      }
+    }
 
-    const KeyFinder = (key: string) =>
-      text?.find((item: any) => item.startsWith(key))
+    const raw = await res.text()
+    const metadataMatch = raw.match(
+      /export const metadata\s*=\s*({[\s\S]*?})\s*;?\s*(?:\n|$)/,
+    )
+
+    if (!metadataMatch) {
+      return {
+        slug,
+        title: slug,
+        description: '',
+        tags: '',
+        publish: false,
+        blog: false,
+      }
+    }
+
+    const metadata = metadataMatch[1]
+
+    const parseValue = (key: string) => {
+      const match = metadata.match(
+        new RegExp(
+          `${key}\\s*:\\s*(?:'([^']*)'|"([^"]*)"|\\[([\\s\\S]*?)\\]|(true|false))`,
+          'i',
+        ),
+      )
+
+      if (!match) return undefined
+
+      if (match[1] !== undefined || match[2] !== undefined) {
+        return match[1] ?? match[2]
+      }
+
+      if (match[3] !== undefined) {
+        return match[3]
+          .split(',')
+          .map((tag) => tag.replace(/['"]/g, '').trim())
+          .filter(Boolean)
+          .join(', ')
+      }
+
+      return match[4] === 'true'
+    }
 
     return {
       slug,
-      title: KeyFinder('title')?.split('title: ')[1].slice(1, -1),
-      description: KeyFinder('description')
-        ?.split('description: ')[1]
-        .slice(1, -1),
-      tags: KeyFinder('tags')?.split('tags: ')[1].slice(1, -1),
-      publish: new RegExp('true').test(
-        KeyFinder('publish')?.split('publish: ')[1] || 'true',
-      ),
-      blog: new RegExp('true').test(
-        KeyFinder('blog')?.split('blog: ')[1] || 'true',
-      ),
-    } as any
+      title: parseValue('title') || slug,
+      description: parseValue('description') || '',
+      tags: parseValue('tags') || '',
+      publish: parseValue('publish') ?? false,
+      blog: parseValue('blog') ?? false,
+    }
   })
-
-  console.log(blogsMeta)
 
   const data = blogsData.map((blog: any) => {
     const matchMeta = blogsMeta.find((item: any) => item.slug === blog.slug)
